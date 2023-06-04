@@ -1,4 +1,4 @@
-# How do I remember all the params/flags for the various tools?
+## How do I remember all the params/flags for the various tools?
 and the answer is mostly I don't,  I use the following strategies
 
 * learn the flags for tools that I do use over and over again like xargs, grep/rg
@@ -10,7 +10,9 @@ and the answer is mostly I don't,  I use the following strategies
   * once you find a tool+param combination you are using over and over again make a short name for it.
   * Prefer `function foo {}` over `alias foo=` because functions are parametrizable, composable (you cant invoke an alias from within another alias or function)
  
-### example of a bunch of commands/flags turned into shorter easier to remember functions for working with git:
+### Example of a bunch of commands/flags turned into shorter easier to remember functions for working with git:
+
+I source these functions in my `.bashrc` to add these conveniences to my workflows.
 
 ```
 function gitty {
@@ -25,7 +27,6 @@ function gnatty {
   git add -A :/ && git commit --amend --no-edit
 }
 
-# gain() defined elswhere, finds branch point from main branch
 function gitnames {
   /usr/bin/env git diff --name-only $(gain)
 }
@@ -41,7 +42,14 @@ function gain {
 }
 ```
 
-### example of *extending* a cli by function wrapping
+### Example of *extending* a CLI by function wrapping
+
+This is another way to make frequent command/args easier to remember and use and to integrate them into an existing command line interface
+that has its own commands like git. 
+Wrapping any call to the binary in a function allows you to add new commands to a CLI, so `git duff` becomes your own super version of `git diff`.
+Use `command` to dispatch to the binary with the same name to avoid recursively entering your own function.
+
+
 ```
 function git {
   if [[ $1 == "names" ]]; then
@@ -50,16 +58,16 @@ function git {
   fi
 
   if [[ $1 == "duff" ]]; then
-    /usr/bin/env git diff $(gain)
+    command git diff $(gain)
     return
   fi
 
   if [[ $1 == "ibase" ]]; then
-    /usr/bin/env git rebase -i $(gain)
+    command git rebase -i $(gain)
     return
   fi
 
-  /usr/bin/env git "$@"
+  command git "$@"
 }
 
 ```
@@ -76,7 +84,7 @@ to create a helper function as it would to do it manually;   then do it because
 if it works well enough and the task ever comes up again you will already have
 the pipeline ready.
 
-With one caveat: make only just good enough, and don't generalize.  Make
+With one caveat: make it only just good enough, and don't generalize.  Make
 something that works for just that purpose and next time just manually edit if
 the needs change.  If you find yourself editing the same script 5 times then
 that's a sign that its time to generalize it.
