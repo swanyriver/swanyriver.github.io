@@ -1,15 +1,14 @@
 theme: jekyll-theme-chirpy
 theme_mode: dark
 
-# TODO avatar
-avatar:
+avatar: /assets/img/avatar.png
 
 lang: en
 timezone: America/Los_Angeles
 
 ################ jekyll-seo-tag 
 # ↓ --------------------------
-title: Dev by Brandon # TODO better title
+title: Dev by Brandon
 url: "https://swanyriver.github.io/"
 tagline: focused on advanced topics for Bash,Vim,Tmux and other development tools 
 description: >- 
@@ -33,7 +32,6 @@ pwa:
 
 paginate: 10
 
-# TODO im not sure i would like line numbers
 kramdown:
   syntax_highlighter: rouge
   syntax_highlighter_opts: 
