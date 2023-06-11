@@ -1,10 +1,9 @@
-## How do I remember all the params/flags for the various tools?
-and the answer is mostly I don't,  I use the following strategies
+## How to remember all the params/flags for the various tools?
 
-* learn the flags for tools that I do use over and over again like xargs, grep/rg
-* learn the flags that are common to multiple commands (like -i for interactive)
+* learn the flags for tools that are used over and over again like xargs, grep/rg, git/hg
+* learn the flags or concepts that are common to multiple commands 
 * learn small reusable functionality and compose it in pipelines
-  * I often use `<cmd> | rev | cut -f 1 -d " " | rev` instead of piping into awk (which has a last-field matcher) because the awk syntax is harder to remember
+  * it is ok to use `<cmd> | rev | cut -f 1 -d " " | rev` instead of piping into awk (which has a last-field matcher) just because the awk syntax is harder to remember
   * don't buy into the myth about ["Useless Use of Cat"](https://blog.sanctum.geek.nz/useless-use-of-cat/),  in fact, prefer cat into pipeline over parameter,  because piping into commands is a much more repeatable and adaptable pattern then learning specific argument placement or flags, and cat-ed files cant be modified by receiving program
 * Most-Importantly,  make aliases/functions:
   * once you find a tool+param combination you are using over and over again make a short name for it.
