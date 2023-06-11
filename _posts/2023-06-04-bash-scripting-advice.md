@@ -3,11 +3,14 @@
 * learn the flags for tools that are used over and over again like xargs, grep/rg, git/hg
 * learn the flags or concepts that are common to multiple commands 
 * learn small reusable functionality and compose it in pipelines
-  * it is ok to use `<cmd> | rev | cut -f 1 -d " " | rev` instead of piping into awk (which has a last-field matcher) just because the awk syntax is harder to remember
+  * it is OK to use `<cmd> | rev | cut -f 1 -d " " | rev` instead of piping into awk (which has a last-field matcher) just because the awk syntax is harder to remember
   * don't buy into the myth about ["Useless Use of Cat"](https://blog.sanctum.geek.nz/useless-use-of-cat/),  in fact, prefer cat into pipeline over parameter,  because piping into commands is a much more repeatable and adaptable pattern then learning specific argument placement or flags, and cat-ed files cant be modified by receiving program
 * Most-Importantly,  make aliases/functions:
   * once you find a tool+param combination you are using over and over again make a short name for it.
-  * Prefer `function foo {}` over `alias foo=` because functions are parametrizable, composable (you cant invoke an alias from within another alias or function)
+  * Prefer `function foo {}` over `alias foo=` because
+     * functions are composable (you cant invoke an alias from within another alias or function or from non-interactive shells)
+     * functions are parametrizable, from `man bash`: `There  is  no  mechanism  for using arguments in the replacement text.  If arguments are needed, a shell function should be used`
+     * in short functions are a first class language feature, whereas aliases are just simple text-replacement of the first word in a simple command
  
 ### Example of a bunch of commands/flags turned into shorter easier to remember functions for working with git:
 
