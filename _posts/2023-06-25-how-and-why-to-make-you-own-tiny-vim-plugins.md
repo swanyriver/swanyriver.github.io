@@ -1,6 +1,5 @@
 ---
 layout: post
-title: how_and_why_to_make_you_own_tiny_vim_plugins
 date: 2023-06-25 12:47 -0700
 ---
 
@@ -9,15 +8,15 @@ It is easy to get started on configuring the appearance and behavior of vim with
 Open source available Vim plugins deal with loading their code into the runtime, script-local namespacing, and handling all expected use-cases and edge-cases.
 But scripting in Vim can be as simple as a single short file and with that you can solve your own personal annoyances and focus on the use-cases that matter to you and be prudent about addressing edge-cases.
 
-## Example: copy using/includes to left-buffer
+## Example: copy using/includes to the left window
 
 When coding in C++ I often found myself repeating a previously done operation and then being immediately greeted with dozens of `W`s from my LSP.
 I would then open a file where I had done this similar operation already and then one by one resolve the `undefined symbol` and `missing include` errors by copying over includes and usings.
 I found myself doing this over and over pressing the same window-movement and copy-paste keys,  so I made the following vimscript to automatically copy them from the right hand window (where v-splits are opened for me) to the left hand window.
 
-https://github.com/swanyriver/BASH/blob/master/vim/copyovercpp.vim
+[copyovercpp.vim](https://github.com/swanyriver/BASH/blob/master/vim/copyovercpp.vim)
 
-```
+```vimscript
 function CopyOverCpp()
   let l:saved_unnamed_register = @@
   let copy_from_save_cursor = getcurpos()
