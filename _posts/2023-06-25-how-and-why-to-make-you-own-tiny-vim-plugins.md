@@ -10,6 +10,8 @@ But scripting in Vim can be as simple as a single short file and with that you c
 
 ## Example: copy using/includes to the left window
 
+<script async id="asciicast-593182" src="https://asciinema.org/a/593182.js"></script>
+
 When coding in C++ I often found myself repeating a previously done operation and then being immediately greeted with dozens of `W`s from my LSP.
 I would then open a file where I had done this similar operation already and then one by one resolve the `undefined symbol` and `missing include` errors by copying over includes and usings.
 I found myself doing this over and over pressing the same window-movement and copy-paste keys,  so I made the following vimscript to automatically copy them from the right hand window (where v-splits are opened for me) to the left hand window.
